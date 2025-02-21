@@ -8,7 +8,10 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        local telescope = require('telescope')
+        telescope.setup({})
+
+        telescope.load_extension("notify")
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})

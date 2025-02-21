@@ -4,9 +4,23 @@ return {
     opts = {},
     config = function ()
         require('overseer').setup({
-            templates = { "builtin", "user.tunneler_build", "user.tunneler_run" }
+            templates = { "builtin", "user.tunneler_run", "user.tunneler_agent3_run", "user.tunneler_agent4_run", "user.tunneler_central_build", "user.tunneler_agent_build", "user.tunneler_gui", "user.monitor4_syncer_build", "user.monitor4_syncer_run" },
+            strategy="terminal",
+            log = {
+                {
+                    type = "notify",
+                    level = vim.log.levels.WARN,
+                },
+                {
+                    type = "file",
+                    filename = "overseer.log",
+                    level = vim.log.levels.WARN,
+                },
+            },
         })
 
-        vim.keymap.set("n", "<leader>o", "<Cmd> OverseerToggle <CR>")
-    end
+        vim.keymap.set("n", "<leader>oo", "<Cmd> OverseerToggle <CR>")
+        vim.keymap.set("n", "<leader>or", "<Cmd> OverseerRun <CR>")
+    end,
+    lazy = false,
 }
