@@ -39,3 +39,5 @@ end)
 
 vim.keymap.set("n", "<leader>l", "z20l" )
 vim.keymap.set("n", "<leader>h", "z20h" )
+
+vim.keymap.set("n", "<leader>di", "<cmd> lua vim.diagnostic.open_float() <CR>")
