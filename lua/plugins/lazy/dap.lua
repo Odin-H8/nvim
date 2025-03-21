@@ -3,7 +3,7 @@ return {
         'mfussenegger/nvim-dap',
         config = function ()
             local dap = require("dap")
-            -- create file with dap configuration
+            -- create file with dap configuration, gitignored in case of secrets
             InitDap()
 
             vim.keymap.set("n", "<F1>", dap.continue)
