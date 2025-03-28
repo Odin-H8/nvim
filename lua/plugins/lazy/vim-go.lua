@@ -12,7 +12,7 @@ return {
         vim.g.go_highlight_space_tab_error = 1
         vim.g.go_highlight_variable_declarations = 0
         vim.g.go_auto_type_info = 1
-        vim.g.go_auto_sameids = 1
+        --vim.g.go_auto_sameids = 1
 
         -- Should probably remap to 'gd' and 'gb' or something
         vim.keymap.set("n", "S", "<Cmd>:GoDef <CR>")

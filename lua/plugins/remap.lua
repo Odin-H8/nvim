@@ -27,3 +27,6 @@ vim.keymap.set("n", "<leader>l", "z20l")
 vim.keymap.set("n", "<leader>h", "z20h")
 
 vim.keymap.set("n", "<leader>di", "<cmd> lua vim.diagnostic.open_float() <CR>")
+
+-- select prev pasted text
+vim.keymap.set('n', 'gp', '`[v`]', { desc = 'Select previously pasted text' })
