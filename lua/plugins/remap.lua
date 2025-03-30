@@ -30,3 +30,5 @@ vim.keymap.set("n", "<leader>di", "<cmd> lua vim.diagnostic.open_float() <CR>")
 
 -- select prev pasted text
 vim.keymap.set('n', 'gp', '`[v`]', { desc = 'Select previously pasted text' })
+vim.opt.guicursor="n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+
