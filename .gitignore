@@ -1,5 +1,4 @@
 plugin/packer_compiled.lua
-lua/overseer/template/user/*
-lua/overseer/out/*
+lua/overseer/*
 
 lua/plugins/lazy/dap_configurations.lua

@@ -4,7 +4,8 @@ return {
         config = function ()
             local dap = require("dap")
             -- create file with dap configuration, gitignored in case of secrets
-            InitDap()
+            local path = vim.fn.stdpath("config")
+            dofile(path .. "/lua/overseer/other/dapconfig.lua")
 
             vim.keymap.set("n", "<F1>", dap.continue)
             vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
