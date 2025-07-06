@@ -4,7 +4,7 @@ return {
     opts = {},
     config = function ()
         require('overseer').setup({
-            templates = { "builtin", "user.tunneler_run", "user.tunneler_agent3_run", "user.tunneler_agent4_run", "user.tunneler_gui", "user.tunneler_tests", "user.monitor4_syncer_run" },
+            templates = { "builtin", "user.init" },
             strategy="terminal",
             log = {
                 {
