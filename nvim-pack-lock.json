@@ -1,0 +1,41 @@
+{
+  "plugins": {
+    "LuaSnip": [],
+    "blink.cmp": {
+      "version": "'v1.6.0'"
+    },
+    "bufferline.nvim": [],
+    "conform.nvim": [],
+    "dressing.nvim": [],
+    "everforest-nvim": {
+      "rev": "557bce9",
+      "src": "https://github.com/neanias/everforest-nvim"
+    },
+    "fff.nvim": [],
+    "flash.nvim": [],
+    "mason.nvim": [],
+    "mini.icons": [],
+    "nvim-autopairs": [],
+    "nvim-dap": [],
+    "nvim-dap-view": [],
+    "nvim-lint": [],
+    "nvim-lspconfig": [],
+    "nvim-notify": [],
+    "nvim-tree.lua": [],
+    "nvim-treesitter": {
+      "version": "'main'"
+    },
+    "onedark.nvim": [],
+    "overseer.nvim": [],
+    "plenary.nvim": [],
+    "render-markdown.nvim": [],
+    "snacks.nvim": [],
+    "telescope.nvim": [],
+    "tiny-inline-diagnostic.nvim": {
+      "rev": "d9d12d4",
+      "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
+    },
+    "vim-dadbod": [],
+    "vim-dadbod-ui": []
+  }
+}
