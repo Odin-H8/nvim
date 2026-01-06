@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 })
 
 require "overseer".setup({
-	templates = { "builtin", "user.init" },
+	templates = { "builtin" },
 	strategy = "terminal",
 	log = {
 		{
@@ -133,13 +133,13 @@ require "conform".setup({
 		lsp_format = "fallback",
 	},
 
-----formatters = {
-----	swag = {
-----		command = "swag",
-----		args = { "fmt", "$FILENAME" },
-----		stdin = false
-----	}
-----}
+	----formatters = {
+	----	swag = {
+	----		command = "swag",
+	----		args = { "fmt", "$FILENAME" },
+	----		stdin = false
+	----	}
+	----}
 })
 
 

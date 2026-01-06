@@ -14,11 +14,21 @@ vim.o.hlsearch = false
 
 vim.g.mapleader = ","
 
+function Do_file_if_exists(name)
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		dofile(name)
+	end
+end
+
 local path = vim.fn.stdpath('config')
-dofile(path .. "/plugin.lua")
-dofile(path .. "/lsp.lua")
-dofile(path .. "/keybinds.lua")
---dofile(path .. "/lua/overseer/other/dapconfig.lua")
+Do_file_if_exists(path .. "/plugin.lua")
+Do_file_if_exists(path .. "/lsp.lua")
+Do_file_if_exists(path .. "/keybinds.lua")
+
+Do_file_if_exists(vim.env.HOME .. "/.local/share/nvim-config/overseer/other/dapconfig.lua")
+Do_file_if_exists(vim.env.HOME .. "/.local/share/nvim-config/overseer/template/init.lua")
 
 
 require("everforest").load()
