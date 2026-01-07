@@ -13,7 +13,6 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true 
 
 map("n", "<leader>di", vim.diagnostic.open_float)
 
-
 map('n', '<leader>ff', require("fff").find_files)
 
 map('n', '<leader>fg', ":Telescope live_grep<CR>")
@@ -49,6 +48,26 @@ map("n", "Z", "<C-o>")
 map("n", "K", function() vim.lsp.buf.hover() end, opts)
 
 
+vim.g.copilot_filetypes = {
+	['*'] = false,
+}
+
+vim.g.copilot_no_tab_map = true
+map('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
+map('n', '<leader>cs', function()
+	if vim.g.copilot_filetypes["*"] then
+		vim.g.copilot_filetypes = {
+			['*'] = false,
+		}
+	else
+		vim.g.copilot_filetypes = {
+			['*'] = true,
+		}
+	end
+end)
+
+map("n", "<C-c>", ":CopilotChatToggle <CR>")
+
 map("n", "<leader>lf", vim.lsp.buf.format)
 
 map("n", "<leader>oo", ":OverseerToggle <CR>")
@@ -70,7 +89,7 @@ map("n", "<leader>db", ":DBUIToggle <CR>")
 vim.keymap.set("n", "<leader>qd", function()
 	vim.diagnostic.setqflist({
 		open = true,
-		title = "Diagnostics",                                                  -- Optional: Gives your diagnostic list a clear title
+		title = "Diagnostics",                                                -- Optional: Gives your diagnostic list a clear title
 		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN }, -- Filter for errors/warnings
 	})
 end, { desc = "Populate Quickfix with Diagnostics" })

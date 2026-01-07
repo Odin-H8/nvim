@@ -26,6 +26,8 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/neanias/everforest-nvim" },
 	{ src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
+	{ src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
+	{ src = "https://github.com/github/copilot.vim" },
 })
 
 require "everforest".setup()
@@ -132,14 +134,6 @@ require "conform".setup({
 		timeout_ms = 1000,
 		lsp_format = "fallback",
 	},
-
-	----formatters = {
-	----	swag = {
-	----		command = "swag",
-	----		args = { "fmt", "$FILENAME" },
-	----		stdin = false
-	----	}
-	----}
 })
 
 
@@ -147,4 +141,18 @@ require "dap-view".setup({
 	winbar = {
 		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
 	}
+})
+
+require "CopilotChat".setup({
+	model = 'gpt-5.1-codex-mini',
+	temperature = 0.1,
+	window = {
+		layout = 'float',
+		width = 180,  -- Fixed width in columns
+		height = 50,  -- Fixed height in rows
+		border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
+		title = '🤖 AI Assistant',
+		zindex = 49,  -- Ensure window stays on top
+	},
+	sticky = { "#buffer:listed" },
 })

@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "CopilotChat.nvim": {
+      "rev": "9db5d3eaafe9fc3c91ce9ecfc416de2798982487",
+      "src": "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
+    },
     "LuaSnip": {
       "rev": "de10d8414235b0a8cabfeba60d07c24304e71f5c",
       "src": "https://github.com/L3MON4D3/LuaSnip"
@@ -16,6 +20,10 @@
     "conform.nvim": {
       "rev": "a0ab60ed666c56b37fd7ed1847d2ac52f2482ce0",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "copilot.vim": {
+      "rev": "206011a8bc5078a02560d5c44177e9849e8f8d6c",
+      "src": "https://github.com/github/copilot.vim"
     },
     "dressing.nvim": {
       "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",

@@ -1,7 +1,12 @@
-vim.lsp.enable({ "gopls", "lua_ls" })
+vim.lsp.config('copilot', {
+	cmd = { 'copilot-language-server', '--stdio', },
+	root_markers = { '.git' },
+})
+
+vim.lsp.enable({ "gopls", "lua_ls", "clangd", "copilot" })
 
 require 'nvim-treesitter.config'.setup({
-	ensure_installed = { 'go', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
+	ensure_installed = { 'go', 'cpp', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
 	auto_install = true,
 	highlight = { enable = true, },
 	indent = {
