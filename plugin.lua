@@ -28,8 +28,10 @@ vim.pack.add({
 	{ src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
 	{ src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
 	{ src = "https://github.com/github/copilot.vim" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 })
 
+require "gitsigns".setup()
 require "everforest".setup()
 require "mason".setup()
 require "bufferline".setup()
@@ -144,7 +146,7 @@ require "dap-view".setup({
 })
 
 require "CopilotChat".setup({
-	model = 'gpt-5.1-codex-mini',
+	model = 'gpt-5-mini',
 	temperature = 0.1,
 	window = {
 		layout = 'float',

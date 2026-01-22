@@ -45,6 +45,10 @@
       "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "gitsigns.nvim": {
+      "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "mason.nvim": {
       "rev": "7dc4facca9702f95353d5a1f87daf23d78e31c2a",
       "src": "https://github.com/mason-org/mason.nvim"
