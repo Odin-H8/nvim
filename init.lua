@@ -30,5 +30,4 @@ Do_file_if_exists(path .. "/keybinds.lua")
 Do_file_if_exists(vim.env.HOME .. "/.local/share/nvim-config/overseer/other/dapconfig.lua")
 Do_file_if_exists(vim.env.HOME .. "/.local/share/nvim-config/overseer/template/init.lua")
 
-
 require("everforest").load()

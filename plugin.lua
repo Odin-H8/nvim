@@ -38,7 +38,6 @@ require "bufferline".setup()
 require "nvim-tree".setup()
 require "notify".setup()
 require "flash".setup()
-require "flash".toggle()
 require "tiny-inline-diagnostic".setup({
 	preset = "simple",
 	transparent_bg = true,

@@ -3,7 +3,37 @@ vim.lsp.config('copilot', {
 	root_markers = { '.git' },
 })
 
-vim.lsp.enable({ "gopls", "lua_ls", "clangd", "copilot" })
+local lsp = require "lspconfig"
+
+lsp.gopls.setup({
+	settings = {
+		gopls = {
+			analyses = {
+				shadow = true,
+				unusedwrite = true,
+				unusedvariable = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+			hints = {
+				assignVariableTypes = false,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+			},
+		},
+	},
+})
+
+vim.lsp.enable({ "lua_ls", "clangd", "copilot", "asm_lsp" })
+
+-- my first own autocmd!
+vim.api.nvim_create_autocmd({ "BufEnter", }, {
+	callback = function()
+		vim.lsp.inlay_hint.enable()
+	end,
+})
 
 require 'nvim-treesitter.config'.setup({
 	ensure_installed = { 'go', 'cpp', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
@@ -13,8 +43,6 @@ require 'nvim-treesitter.config'.setup({
 		enable = true,
 	}
 })
-
-local lsp = require "lspconfig"
 
 vim.api.nvim_create_autocmd("FileType", { -- enable treesitter highlighting and indents
 	callback = function(args)
