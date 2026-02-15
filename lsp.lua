@@ -26,7 +26,7 @@ lsp.gopls.setup({
 	},
 })
 
-vim.lsp.enable({ "lua_ls", "clangd", "copilot", "asm_lsp" })
+vim.lsp.enable({ "asm_lsp", "gopls", "lua_ls", "clangd", "copilot", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
 		vim.lsp.inlay_hint.enable()
 	end,
 })
+
 
 require 'nvim-treesitter.config'.setup({
 	ensure_installed = { 'go', 'cpp', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
