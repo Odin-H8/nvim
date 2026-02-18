@@ -26,7 +26,7 @@ lsp.gopls.setup({
 	},
 })
 
-vim.lsp.enable({ "asm_lsp", "gopls", "lua_ls", "clangd", "copilot", "vtsls", "html", "cssls" })
+vim.lsp.enable({ "asm_lsp", "lua_ls", "clangd", "copilot", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
 vim.api.nvim_create_autocmd({ "BufEnter", }, {

@@ -93,3 +93,9 @@ vim.keymap.set("n", "<leader>qd", function()
 		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN }, -- Filter for errors/warnings
 	})
 end, { desc = "Populate Quickfix with Diagnostics" })
+
+map("n", "<leader>fcf", function()
+	local path = vim.fn.expand('%:h')
+
+	require("telescope.builtin").find_files({ cwd = path })
+end)
