@@ -22,7 +22,9 @@ map('n', '<leader>fi', ":Telescope lsp_implementations<CR>")
 map('n', '<leader>fe', ":Telescope diagnostics<CR>")
 map('n', '<leader>rn', vim.lsp.buf.rename)
 
-map('n', '<leader>n', ":NvimTreeToggle<CR>")
+map('n', '<leader>n', function()
+	require("yazi").yazi()
+end)
 
 map('n', '<leader>cr', ":BufferLineCloseRight <CR>")
 map('n', '<leader>cl', ":BufferLineCloseLeft <CR>")
@@ -47,6 +49,7 @@ map("n", "X", function() vim.lsp.buf.type_definition() end, opts)
 map("n", "Z", "<C-o>")
 map("n", "K", function() vim.lsp.buf.hover() end, opts)
 
+map("n", "<leader>u", require("undotree").open)
 
 vim.g.copilot_filetypes = {
 	['*'] = false,

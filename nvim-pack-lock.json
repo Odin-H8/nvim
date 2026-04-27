@@ -133,6 +133,10 @@
     "vim-dadbod-ui": {
       "rev": "e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373",
       "src": "https://github.com/kristijanhusak/vim-dadbod-ui"
+    },
+    "yazi.nvim": {
+      "rev": "a4c292e0cb2647773e91ae29eeb87dd26f33c6b9",
+      "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
 }

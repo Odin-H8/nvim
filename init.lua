@@ -12,6 +12,8 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 vim.o.hlsearch = false
 
+vim.o.undofile = true
+
 vim.g.mapleader = ","
 
 function Do_file_if_exists(name)

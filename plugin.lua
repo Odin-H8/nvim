@@ -5,7 +5,7 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-lint" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
-	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
+	{ src = "https://github.com/mikavilpas/yazi.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/navarasu/onedark.nvim" },
@@ -31,11 +31,13 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 })
 
+vim.cmd("packadd nvim.undotree")
+
 require "gitsigns".setup()
 require "everforest".setup()
 require "mason".setup()
 require "bufferline".setup()
-require "nvim-tree".setup()
+require "yazi".setup()
 require "notify".setup()
 require "flash".setup()
 require "tiny-inline-diagnostic".setup({
