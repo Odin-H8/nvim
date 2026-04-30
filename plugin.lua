@@ -127,6 +127,13 @@ require "blink.cmp".setup({
 		keymap = { preset = 'inherit' },
 		completion = { menu = { auto_show = true }, list = { selection = { preselect = false } } },
 	},
+	signature = {
+		enabled = true,
+		trigger = {
+			enabled = true,
+			show_on_insert = true,
+		},
+	},
 })
 
 require "conform".setup({
