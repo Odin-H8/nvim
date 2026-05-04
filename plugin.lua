@@ -105,9 +105,13 @@ require "overseer".setup({
 
 require "blink.cmp".setup({
 	keymap = {
-		['<Tab>'] = { 'select_next', 'fallback' },
+		['<Tab>']   = { 'select_next', 'fallback' },
 		['<S-Tab>'] = { 'select_prev', 'fallback' },
-		['<CR>'] = { 'accept', 'fallback' },
+		['<CR>']    = { 'accept', 'fallback' },
+		['<C-f>']   = { 'snippet_forward', 'fallback' },
+		['<C-b>']   = { 'snippet_backward', 'fallback' },
+		['<C-d>']   = { 'scroll_documentation_down', 'fallback' },
+		['<C-u>']   = { 'scroll_documentation_up', 'fallback' },
 	},
 	completion = {
 		documentation = {

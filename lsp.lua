@@ -8,6 +8,7 @@ local lsp = require "lspconfig"
 lsp.gopls.setup({
 	settings = {
 		gopls = {
+			usePlaceholders = true,
 			analyses = {
 				shadow = true,
 				unusedwrite = true,
