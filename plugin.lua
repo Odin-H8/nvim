@@ -26,15 +26,14 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/neanias/everforest-nvim" },
 	{ src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
-	{ src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
-	{ src = "https://github.com/github/copilot.vim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/zbirenbaum/copilot.lua" },
+	{ src = "https://github.com/giuxtaposition/blink-cmp-copilot" }
 })
 
 vim.cmd("packadd nvim.undotree")
 
 require "gitsigns".setup()
-require "everforest".setup()
 require "mason".setup()
 require "bufferline".setup()
 require "yazi".setup()
@@ -138,6 +137,17 @@ require "blink.cmp".setup({
 			show_on_insert = true,
 		},
 	},
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer", "copilot" },
+		providers = {
+			copilot = {
+				name = "copilot",
+				module = "blink-cmp-copilot",
+				score_offset = -1000,
+				async = true,
+			},
+		},
+	},
 })
 
 require "conform".setup({
@@ -157,16 +167,7 @@ require "dap-view".setup({
 	}
 })
 
-require "CopilotChat".setup({
-	model = 'gpt-5-mini',
-	temperature = 0.1,
-	window = {
-		layout = 'float',
-		width = 180,  -- Fixed width in columns
-		height = 50,  -- Fixed height in rows
-		border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
-		title = '🤖 AI Assistant',
-		zindex = 49,  -- Ensure window stays on top
-	},
-	sticky = { "#buffer:listed" },
+
+require('copilot').setup({
+	suggestion = { enabled = false },
 })

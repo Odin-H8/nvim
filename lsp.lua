@@ -1,8 +1,3 @@
-vim.lsp.config('copilot', {
-	cmd = { 'copilot-language-server', '--stdio', },
-	root_markers = { '.git' },
-})
-
 local lsp = require "lspconfig"
 
 lsp.gopls.setup({
@@ -27,7 +22,7 @@ lsp.gopls.setup({
 	},
 })
 
-vim.lsp.enable({ "asm_lsp", "lua_ls", "clangd", "copilot", "vtsls", "html", "cssls" })
+vim.lsp.enable({ "asm_lsp", "lua_ls", "clangd", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
@@ -36,9 +31,19 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+	callback = function () 
+		require("nvim-treesitter.parsers").go = {
+			install_info = {
+				url = "https://github.com/alienvspredator/tree-sitter-go",
+				branch = "main",
+			},
+		}
+	end
+})
 
 require 'nvim-treesitter.config'.setup({
-	ensure_installed = { 'go', 'cpp', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
+	ensure_installed = { 'cpp', 'c', 'lua_ls', "markdown_inline", "markdown", "html", "yaml" },
 	auto_install = true,
 	highlight = { enable = true, },
 	indent = {
@@ -91,3 +96,19 @@ vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end,
 })
+
+local blink_list = require("blink.cmp.completion.list")
+local orig_fuzzy = blink_list.fuzzy
+blink_list.fuzzy = function(context, items_by_source)
+    local items = orig_fuzzy(context, items_by_source)
+    for i, item in ipairs(items) do
+        if item.source_id == "copilot" then
+            if i ~= 2 and #items > 1 then
+                table.remove(items, i)
+                table.insert(items, math.min(2, #items + 1), item)
+            end
+            break
+        end
+    end
+    return items
+end

@@ -14,8 +14,8 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true 
 map("n", "<leader>di", vim.diagnostic.open_float)
 
 map('n', '<leader>ff', require("fff").find_files)
+map('n', '<leader>fg', function() require("fff").live_grep() end)
 
-map('n', '<leader>fg', ":Telescope live_grep<CR>")
 map('n', '<leader>fd', ":Telescope lsp_definitions<CR>")
 map('n', '<leader>fr', ":Telescope lsp_references<CR>")
 map('n', '<leader>fi', ":Telescope lsp_implementations<CR>")
@@ -50,26 +50,6 @@ map("n", "Z", "<C-o>")
 map("n", "K", function() vim.lsp.buf.hover() end, opts)
 
 map("n", "<leader>u", require("undotree").open)
-
-vim.g.copilot_filetypes = {
-	['*'] = false,
-}
-
-vim.g.copilot_no_tab_map = true
-map('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
-map('n', '<leader>cs', function()
-	if vim.g.copilot_filetypes["*"] then
-		vim.g.copilot_filetypes = {
-			['*'] = false,
-		}
-	else
-		vim.g.copilot_filetypes = {
-			['*'] = true,
-		}
-	end
-end)
-
-map("n", "<C-c>", ":CopilotChatToggle <CR>")
 
 map("n", "<leader>lf", vim.lsp.buf.format)
 
