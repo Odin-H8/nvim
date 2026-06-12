@@ -1,6 +1,4 @@
-local lsp = require "lspconfig"
-
-lsp.gopls.setup({
+vim.lsp.config("gopls", {
 	settings = {
 		gopls = {
 			usePlaceholders = true,
@@ -22,7 +20,7 @@ lsp.gopls.setup({
 	},
 })
 
-vim.lsp.enable({ "asm_lsp", "lua_ls", "clangd", "vtsls", "html", "cssls" })
+vim.lsp.enable({ "gopls", "asm_lsp", "lua_ls", "clangd", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
