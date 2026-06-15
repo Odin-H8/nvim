@@ -16,7 +16,6 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 	{ src = "https://github.com/echasnovski/mini.icons" },
-	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
 	{ src = "https://github.com/igorlfs/nvim-dap-view" },
 	{ src = "https://github.com/dmtrKovalenko/fff.nvim" },
@@ -39,6 +38,7 @@ require "bufferline".setup()
 require "yazi".setup()
 require "notify".setup()
 require "flash".setup()
+
 require "tiny-inline-diagnostic".setup({
 	preset = "simple",
 	transparent_bg = true,
@@ -49,8 +49,9 @@ require "tiny-inline-diagnostic".setup({
 		arrow = "",
 	}
 })
+
 require "nvim-autopairs".setup({
-	disable_filetype = { "TelescopePrompt", "spectre_panel", "snacks_picker_input", "fff_input" },
+	disable_filetype = { "TelescopePrompt", "spectre_panel", "fff_input" },
 })
 
 
@@ -58,12 +59,6 @@ require "fff".setup({
 	keymaps = {
 		move_up = { "<tab>", "<Up>" },
 		move_down = { "<S-tab>", "<Down>" }
-	}
-})
-
-require "snacks".setup({
-	opts = {
-		input = true,
 	}
 })
 

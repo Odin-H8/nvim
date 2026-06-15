@@ -20,7 +20,7 @@ vim.lsp.config("gopls", {
 	},
 })
 
-vim.lsp.enable({ "gopls", "asm_lsp", "lua_ls", "clangd", "vtsls", "html", "cssls" })
+vim.lsp.enable({ "gopls", "asm_lsp", "emmylua_ls", "clangd", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
@@ -63,6 +63,8 @@ vim.api.nvim_create_autocmd("FileType", { -- enable treesitter highlighting and 
 	end
 })
 
+local diag = require("tiny-inline-diagnostic")
+
 local methods = vim.lsp.protocol.Methods
 local inlay_hint_handler = vim.lsp.handlers[methods["textDocument_inlayHint"]]
 vim.lsp.handlers[methods["textDocument_inlayHint"]] = function(err, result, ctx, config)
@@ -80,6 +82,18 @@ vim.lsp.handlers[methods["textDocument_inlayHint"]] = function(err, result, ctx,
 			:totable()
 	end
 	inlay_hint_handler(err, result, ctx, config)
+
+	-- The inlay-hint extmarks are only applied by core's decoration provider
+	-- during a redraw. tiny-inline-diagnostic positions the cursor-line
+	-- diagnostic at virtcol('$'), which only reflects those inline hints once
+	-- they're drawn. So force the redraw first, then re-measure & re-render.
+	vim.schedule(function()
+		local bufnr = ctx.bufnr
+		if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+			vim.cmd("redraw")
+			require("tiny-inline-diagnostic.renderer").safe_render(diag.config, bufnr)
+		end
+	end)
 end
 
 vim.o.updatetime = 250
