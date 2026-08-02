@@ -57,8 +57,10 @@ require "nvim-autopairs".setup({
 
 require "fff".setup({
 	keymaps = {
-		move_up = { "<tab>", "<Up>" },
-		move_down = { "<S-tab>", "<Down>" }
+		move_up = { "<Tab>", "<Up>" },
+		move_down = { "<S-tab>", "<Down>" },
+		toggle_select = { },
+		cycle_grep_modes = '<C-f>',
 	}
 })
 
@@ -156,11 +158,11 @@ require "conform".setup({
 })
 
 
-require "dap-view".setup({
-	winbar = {
-		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
-	}
-})
+-- require "dap-view".setup({
+-- 	winbar = {
+-- 		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+-- 	}
+-- })
 
 
 require('copilot').setup({
