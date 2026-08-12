@@ -30,11 +30,11 @@ vim.lsp.config("gopls", {
 vim.lsp.enable({ "gopls", "asm_lsp", "emmylua_ls", "clangd", "vtsls", "html", "cssls" })
 
 -- my first own autocmd!
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	callback = function ()
-		vim.lsp.inlay_hint.enable()
-	end
-})
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- 	callback = function ()
+-- 		vim.lsp.inlay_hint.enable()
+-- 	end
+-- })
 
 vim.api.nvim_create_autocmd('User', {
 	pattern = 'TSUpdate',
@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd("FileType", { -- enable treesitter highlighting and 
 local diag = require("tiny-inline-diagnostic")
 
 local methods = vim.lsp.protocol.Methods
-local inlay_hint_handler = vim.lsp.handlers[methods["textDocument_inlayHint"]]
+-- local inlay_hint_handler = vim.lsp.handlers[methods["textDocument_inlayHint"]]
 vim.lsp.handlers[methods["textDocument_inlayHint"]] = function (err, result, ctx, config)
 	if type(result) ~= "table" and type(result) ~= "function" then
 		return
@@ -112,7 +112,7 @@ vim.lsp.handlers[methods["textDocument_inlayHint"]] = function (err, result, ctx
 			end)
 			:totable()
 	end
-	inlay_hint_handler(err, result, ctx, config)
+	-- inlay_hint_handler(err, result, ctx, config)
 
 	-- The inlay-hint extmarks are only applied by core's decoration provider
 	-- during a redraw. tiny-inline-diagnostic positions the cursor-line
@@ -139,19 +139,3 @@ vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 })
-
-local blink_list = require("blink.cmp.completion.list")
-local orig_fuzzy = blink_list.fuzzy
-blink_list.fuzzy = function (context, items_by_source)
-	local items = orig_fuzzy(context, items_by_source)
-	for i, item in ipairs(items) do
-		if item.source_id == "copilot" then
-			if i ~= 2 and #items > 1 then
-				table.remove(items, i)
-				table.insert(items, math.min(2, #items + 1), item)
-			end
-			break
-		end
-	end
-	return items
-end
