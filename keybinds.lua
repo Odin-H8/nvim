@@ -14,7 +14,9 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true 
 map("n", "<leader>di", vim.diagnostic.open_float)
 
 map('n', '<leader>ff', require("fff").find_files)
-map('n', '<leader>fg', function() require("fff").live_grep() end)
+map('n', '<leader>fg', function ()
+	require("fff").live_grep()
+end)
 
 map('n', '<leader>fd', ":Telescope lsp_definitions<CR>")
 map('n', '<leader>fr', ":Telescope lsp_references<CR>")
@@ -22,7 +24,7 @@ map('n', '<leader>fi', ":Telescope lsp_implementations<CR>")
 map('n', '<leader>fe', ":Telescope diagnostics<CR>")
 map('n', '<leader>rn', vim.lsp.buf.rename)
 
-map('n', '<leader>n', function()
+map('n', '<leader>n', function ()
 	require("yazi").yazi()
 end)
 
@@ -44,10 +46,23 @@ map('n', '<leader>7', ":BufferLineGoToBuffer 7 <CR>")
 map('n', '<leader>8', ":BufferLineGoToBuffer 8 <CR>")
 map('n', '<leader>9', ":BufferLineGoToBuffer 9 <CR>")
 
-map("n", "S", function() vim.lsp.buf.definition() end, opts)
-map("n", "X", function() vim.lsp.buf.type_definition() end, opts)
+map({ 'n', 'v' }, '<leader>cz', function ()
+	vim.lsp.buf.code_action()
+end)
+
+map("n", "S", function ()
+	vim.lsp.buf.definition()
+end, opts
+)
+map("n", "X", function ()
+	vim.lsp.buf.type_definition()
+end, opts
+)
 map("n", "Z", "<C-o>")
-map("n", "K", function() vim.lsp.buf.hover() end, opts)
+map("n", "K", function ()
+	vim.lsp.buf.hover()
+end, opts
+)
 
 map("n", "<leader>u", require("undotree").open)
 
@@ -69,15 +84,16 @@ map({ "n", "x" }, "<leader>g", flash.jump)
 
 map("n", "<leader>db", ":DBUIToggle <CR>")
 
-vim.keymap.set("n", "<leader>qd", function()
+vim.keymap.set("n", "<leader>qd", function ()
 	vim.diagnostic.setqflist({
 		open = true,
-		title = "Diagnostics",                                                -- Optional: Gives your diagnostic list a clear title
-		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN }, -- Filter for errors/warnings
+		title = "Diagnostics",                                                     -- Optional: Gives your diagnostic list a clear title
+		severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN } -- Filter for errors/warnings
 	})
-end, { desc = "Populate Quickfix with Diagnostics" })
+end, { desc = "Populate Quickfix with Diagnostics" }
+)
 
-map("n", "<leader>fcf", function()
+map("n", "<leader>fcf", function ()
 	local path = vim.fn.expand('%:h')
 
 	require("telescope.builtin").find_files({ cwd = path })
